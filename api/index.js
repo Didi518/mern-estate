@@ -1,7 +1,16 @@
 import express from 'express'
+import dotenv from 'dotenv'
+
+import dbConnect from '../config/db.js'
 
 const app = express()
 
-app.listen(8080, () => {
-  console.log(`Serveur connecté sur le port 8080`)
+const PORT = process.env.PORT || 8080
+
+dotenv.config()
+
+dbConnect()
+
+app.listen(PORT, () => {
+  console.log(`Serveur connecté sur le port: ${PORT}`)
 })
